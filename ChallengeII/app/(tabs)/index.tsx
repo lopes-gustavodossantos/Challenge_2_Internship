@@ -1,14 +1,27 @@
-import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+import { useFonts } from 'expo-font';
+import { Text, View, Pressable, StyleSheet, ImageBackground } from 'react-native';
 
 export default function TabOneScreen() {
+  const [fontsLoaded] = useFonts({
+    'Bebas Neue': require('../../assets/fonts/BebasNeue-Regular.ttf'),
+    'Poppins Thin': require('../../assets/fonts/Poppins-Thin.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <ImageBackground source={require('../../assets/images/background_initial_screen.png')} resizeMode="cover" style={styles.imageBackground}>        
+        <View style={styles.overlay}></View> 
+        <Text style={styles.title}>FIND D BEST</Text>
+        <Text style={styles.byline}>Restaurant</Text>
+
+        <Pressable style={styles.button} onPress={() => navigation.navigate('SecondScreen')}>
+          <Text style={styles.buttontext}>Acessar</Text>
+        </Pressable>      
+      </ImageBackground>
     </View>
   );
 }
@@ -20,12 +33,61 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    width: 260,
+    top: 128,
+    left: 77,
+    fontFamily: 'Bebas Neue',
+    fontWeight: '400',
+    fontSize: 72,
+    fontStyle: 'normal',
+    lineHeight: 72,
+    textAlign: 'center',
+    color: '#FFFFFF',
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  byline: {
+    width: 132,
+    top: 120,
+    left: 141,
+    fontFamily: 'Poppins Regular',
+    fontWeight: '400',
+    fontSize: 24,
+    fontStyle: 'normal',
+    lineHeight: 24,
+    textAlign: 'center',
+    color: '#FFFFFF',
+  },
+  button: {
+    width: 370,
+    height: 50,
+    marginTop: 525,
+    left: 25,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#E73030',
+  },
+  buttontext: {
+    width: 400,
+    fontFamily: 'Poppins Regular',
+    fontWeight: '400',
+    fontSize: 20,
+    fontStyle: 'normal',
+    lineHeight: 20,
+    textAlign: 'center',
+    color: '#FFFFFF',
+  },
+  content: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  imageBackground: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
   },
 });
