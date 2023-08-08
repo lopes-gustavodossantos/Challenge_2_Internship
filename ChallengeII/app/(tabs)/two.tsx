@@ -1,14 +1,20 @@
-import { StyleSheet } from 'react-native';
+import { useFonts } from 'expo-font';
+import { Text, View, Pressable, StyleSheet, ImageBackground } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+export default function TabOneScreen() {
+  const navigation = useNavigation();
 
-export default function TabTwoScreen() {
+  const [fontsLoaded] = useFonts({
+    'Poppins Regular': require('../../assets/fonts/Poppins-Regular.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/two.tsx" />
     </View>
   );
 }
@@ -18,14 +24,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#2C2C2E',
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  content: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
