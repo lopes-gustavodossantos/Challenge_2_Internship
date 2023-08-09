@@ -31,6 +31,7 @@ const RestaurantsListScreen = ({ navigation }: { navigation: any }) => {
 
   useEffect(() => {
     axios.get('https://8jcox47hg2.execute-api.us-east-2.amazonaws.com/dev')
+    
       .then(response => {
         setRestaurants(response.data.body.restaurants);
         setLoading(false);
