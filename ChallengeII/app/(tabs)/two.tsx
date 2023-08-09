@@ -1,30 +1,64 @@
-import React from 'react';
-import { useFonts } from 'expo-font';
-import { Text, View, Pressable, StyleSheet, ImageBackground } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View, Pressable, StyleSheet, ImageBackground, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
+
+interface Restaurant {
+  id: number;
+  name: string;
+  description: string;
+  coverImageUrl: string;
+  rating: number;
+  menu: string;
+}
 
 export default function TabOneScreen() {
   const navigation = useNavigation();
-
-  const [fontsLoaded] = useFonts({
-    'Poppins Regular': require('../../assets/fonts/Poppins-Regular.ttf'),
-  });
-
-  if (!fontsLoaded) {
-    return null;
-  }
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Restaurantes</Text>
       </View>
-      <View style={styles.content}>
-        {/* Your content goes here */}
-      </View>
+      <RestaurantsListScreen navigation={navigation} />
     </View>
   );
 }
+
+const RestaurantsListScreen = ({ navigation }: { navigation: any }) => {
+  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios.get('https://8jcox47hg2.execute-api.us-east-2.amazonaws.com/dev')
+      .then(response => {
+        setRestaurants(response.data.body.restaurants);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error(error);
+        setLoading(false);
+      });
+  }, []);
+
+  const navigateToDetail = (restaurant: Restaurant) => {
+    navigation.navigate('RestaurantDetailScreen', { restaurant });
+  };
+
+  if (loading) {
+    return <ActivityIndicator />;
+  }
+
+  return (
+    <View style={styles.content}>
+      {restaurants.map((restaurant, index) => (
+        <Pressable key={index} onPress={() => navigateToDetail(restaurant)}>
+          <Text>{restaurant.name}</Text>
+        </Pressable>
+      ))}
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

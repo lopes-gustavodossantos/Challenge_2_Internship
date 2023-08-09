@@ -21,7 +21,7 @@ export default function TabOneScreen() {
         <Text style={styles.title}>FIND D BEST</Text>
         <Text style={styles.byline}>Restaurant</Text>
 
-        <Pressable style={styles.button} onPress={() => navigation.navigate('two')}>
+        <Pressable style={styles.button} onPress={() => navigation.navigate('two' as never)}>
           <Text style={styles.buttontext}>Acessar</Text>
         </Pressable>      
       </ImageBackground>
