@@ -23,7 +23,10 @@ Each one with image, title, description and a button that takes you to another s
 >At the end of this file you will be able to see some images of the Project.
 
 <br> **Authors:**
->Gustavo dos Santos Lopes, Guilherme Alfredo Graebim, João Guilherme Lemes Do Nascimento, João Inácio Campana Moraes
+>Gustavo dos Santos Lopes
+>Guilherme Alfredo Graebim
+>João Guilherme Lemes Do Nascimento
+>João Inácio Campana Moraes
 
 <br> **For support:**
 >lopes.gustavodossantos@gmail.com
