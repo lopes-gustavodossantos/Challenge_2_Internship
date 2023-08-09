@@ -8,8 +8,8 @@ Each one with image, title, description and a button that takes you to another s
 <br> **Project Status:**
 >Concluded.
 
-<br> **What I used in this Project:**<br>
-><img align="center" alt="JavaScript" height="50" width="50" title="JavaScript" src="https://skillicons.dev/icons?i=js"> <img align="center" alt="TypeScript" height="50" width="50" title="TypeScript" src="https://skillicons.dev/icons?i=ts"> <img align="center" alt="HTML" height="50" width="50" title="HTML" src="https://skillicons.dev/icons?i=html"> <img align="center" alt="CSS" height="50" width="50" title="CSS" src="https://skillicons.dev/icons?i=css">
+<br> **What We used in this Project:**<br>
+><img align="center" alt="ReactNative" height="50" width="50" title="ReactNative" src="https://skillicons.dev/icons?i=react"> <img align="center" alt="TypeScript" height="50" width="50" title="TypeScript" src="https://skillicons.dev/icons?i=ts">
 
 <br> **Requirements:**
 >It's only necessary download the repository.
@@ -24,8 +24,11 @@ Each one with image, title, description and a button that takes you to another s
 
 <br> **Authors:**
 >Gustavo dos Santos Lopes
+
 >Guilherme Alfredo Graebim
+
 >João Guilherme Lemes Do Nascimento
+
 >João Inácio Campana Moraes
 
 <br> **For support:**
