@@ -1,25 +1,32 @@
+import { useFonts } from 'expo-font';
 import React, { useState, useEffect } from 'react';
-import { Text, View, Pressable, StyleSheet, ImageBackground, ActivityIndicator } from 'react-native';
+import { Text, View, Pressable, StyleSheet, ImageBackground, ActivityIndicator, FlatList, Image } from 'react-native'; // Added Image
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 
 interface Restaurant {
   id: number;
   name: string;
-  description: string;
   coverImageUrl: string;
-  rating: number;
-  menu: string;
 }
 
 export default function TabOneScreen() {
   const navigation = useNavigation();
+
+  const [fontsLoaded] = useFonts({
+    'Poppins Regular': require('../../assets/fonts/Poppins-Regular.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Restaurantes</Text>
       </View>
+      
       <RestaurantsListScreen navigation={navigation} />
     </View>
   );
@@ -31,7 +38,6 @@ const RestaurantsListScreen = ({ navigation }: { navigation: any }) => {
 
   useEffect(() => {
     axios.get('https://8jcox47hg2.execute-api.us-east-2.amazonaws.com/dev')
-    
       .then(response => {
         setRestaurants(response.data.body.restaurants);
         setLoading(false);
@@ -50,14 +56,22 @@ const RestaurantsListScreen = ({ navigation }: { navigation: any }) => {
     return <ActivityIndicator />;
   }
 
+  const renderItem = ({ item }: { item: Restaurant }) => (
+    <Pressable onPress={() => navigateToDetail(item)}>
+      <View style={styles.card}>
+        <Image source={{ uri: item.coverImageUrl }} style={styles.cardImage} />
+        <Text style={styles.cardTitle}>{item.name}</Text>
+      </View>
+    </Pressable>
+  );
+
   return (
-    <View style={styles.content}>
-      {restaurants.map((restaurant, index) => (
-        <Pressable key={index} onPress={() => navigateToDetail(restaurant)}>
-          <Text>{restaurant.name}</Text>
-        </Pressable>
-      ))}
-    </View>
+    <FlatList
+      data={restaurants}
+      renderItem={renderItem}
+      keyExtractor={item => item.id.toString()}
+      contentContainerStyle={styles.content}
+    />
   );
 };
 
@@ -67,28 +81,47 @@ const styles = StyleSheet.create({
     backgroundColor: '#2C2C2E',
   },
   header: {
-    width: 414,
+    width: '100%',
     height: 98,
-    flexShrink: 0,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#1C1C1E',
   },
   headerText: {
-    width: 126,
-    height: 32,
-    top: 5,
     fontFamily: 'Poppins Regular',
     fontSize: 18,
-    fontStyle: 'normal',
     fontWeight: '700',
-    lineHeight: 32,
-    textAlign: 'center',
     color: '#FFFFFF',
   },
   content: {
-    flex: 1,
+    flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  card: {
+    width: 370,
+    height: 150,
+    top: 30,
+    flexShrink: 0,
+    borderRadius: 12,
+    marginBottom: 20,
+  },
+  cardImage: {
+    width: '100%',
+    height: 150,
+    borderRadius: 12,
+  },
+  cardTitle: {
+    position: 'absolute',
+    width: 220,
+    height: 'auto',
+    left: 19,
+    bottom: 15,
+    fontFamily: 'Poppins Regular',
+    fontWeight: '700',
+    fontSize: 32,
+    fontStyle: 'normal',
+    lineHeight: 32,
+    color: '#FFFFFF',
   },
 });
