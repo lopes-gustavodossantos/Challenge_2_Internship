@@ -1,63 +1,50 @@
-import React from "react-native";
-import { View, Text, FlatList, StyleSheet, Image } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, StyleSheet, FlatList, Image } from "react-native";
+import axios from "axios";
 
-//Array Cards
-const data = [
-  {
-    id: "1",
-    title: "Sushi House",
-    image: require("./assets/images/sushiHouse.jpeg"),
-  },
-  {
-    id: "2",
-    title: "The Raven \n Restaurant",
-    image: require("./assets/images/ravenRestaurant.jpeg"),
-  },
-  {
-    id: "3",
-    title: "Churrascaria \n Barranco",
-    image: require("./assets/images/churracariaBarranco.jpeg"),
-  },
-  {
-    id: "4",
-    title: "Black Burger",
-    image: require("./assets/images/blackBurguer.jpeg"),
-  },
-];
+export default function App() {
+  const [restaurants, setRestaurants] = useState([]);
 
-const Card = ({ title, image }) => (
-  <View style={styles.card}>
-    <Image source={image} style={styles.cardImage} />
-    <View style={styles.overlay} />
-    <Text style={styles.cardTitle}>{title}</Text>
-  </View>
-);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get("URL_DA_API"); // Substitua 'URL_DA_API' pela URL real da API
+        setRestaurants(response.data.body.restaurants);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+    fetchData();
+  }, []);
 
-const App = () => {
+  const renderRestaurant = ({ item }) => (
+    <View style={styles.card}>
+      <Image source={{ uri: item.coverImageUrl }} style={styles.cardImage} />
+      <View style={styles.overlay}></View>
+      <Text style={styles.cardTitle}>{item.name}</Text>
+    </View>
+  );
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Restaurantes</Text>
       </View>
       <FlatList
-        data={data}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <Card title={item.title} image={item.image} />
-        )}
+        data={restaurants}
+        renderItem={renderRestaurant}
+        keyExtractor={(item) => item.id.toString()}
         style={styles.flatList}
       />
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
-  //Screen
   container: {
     flex: 1,
     backgroundColor: "#2C2C2E",
   },
-
   //Header
   header: {
     width: 414,
@@ -75,14 +62,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
   },
-
-  //FlatList
   flatList: {
     paddingHorizontal: 25,
     paddingTop: 20,
   },
-
-  //Card
   card: {
     width: 340,
     height: 150,
@@ -95,14 +78,10 @@ const styles = StyleSheet.create({
     height: "100%",
     position: "absolute",
   },
-
-  //Background Color Image
   overlay: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: "rgba(0, 0, 0, 0.40)",
   },
-
-  //Card
   cardTitle: {
     position: "absolute",
     bottom: 20,
@@ -112,5 +91,3 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
-
-export default App;
