@@ -8,7 +8,9 @@ export default function App() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get("URL_DA_API"); // Substitua 'URL_DA_API' pela URL real da API
+        const response = await axios.get(
+          "https://8jcox47hg2.execute-api.us-east-2.amazonaws.com/dev"
+        );
         setRestaurants(response.data.body.restaurants);
       } catch (error) {
         console.error("Error fetching data:", error);
