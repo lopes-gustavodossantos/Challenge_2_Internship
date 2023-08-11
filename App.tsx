@@ -64,10 +64,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
   },
+  // Flatlist
   flatList: {
     paddingHorizontal: 25,
     paddingTop: 20,
   },
+  // Cards
   card: {
     width: 340,
     height: 150,
@@ -80,10 +82,7 @@ const styles = StyleSheet.create({
     height: "100%",
     position: "absolute",
   },
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(0, 0, 0, 0.40)",
-  },
+
   cardTitle: {
     position: "absolute",
     bottom: 20,
@@ -91,5 +90,10 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 30,
     fontWeight: "bold",
+  },
+  //Color Image
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "rgba(0, 0, 0, 0.40)",
   },
 });
