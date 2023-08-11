@@ -1,6 +1,6 @@
 import { useFonts } from 'expo-font';
 import React, { useState, useEffect } from 'react';
-import { Text, View, Pressable, StyleSheet, ActivityIndicator, FlatList, Image } from 'react-native'; // Added Image
+import { Text, View, Pressable, StyleSheet, ImageBackground, ActivityIndicator, FlatList, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 
@@ -10,7 +10,7 @@ interface Restaurant {
   coverImageUrl: string;
 }
 
-export default function TabOneScreen() {
+export default function TwoScreen() {
   const navigation = useNavigation();
 
   const [fontsLoaded] = useFonts({
@@ -48,18 +48,21 @@ const RestaurantsListScreen = ({ navigation }: { navigation: any }) => {
       });
   }, []);
 
+  const navigateToDetail = (restaurant: Restaurant) => {
+    navigation.navigate('three', { restaurant });
+  };
+
   if (loading) {
     return <ActivityIndicator />;
   }
 
   const renderItem = ({ item }: { item: Restaurant }) => (
-    
-    <Pressable onPress={() => navigation.navigate('three' as never)}>
+    <Pressable onPress={() => navigateToDetail(item)}>
       <View style={styles.card}>
         <Image source={{ uri: item.coverImageUrl }} style={styles.cardImage} />
         <Text style={styles.cardTitle}>{item.name}</Text>
       </View>
-    </Pressable>     
+    </Pressable>
   );
 
   return (
