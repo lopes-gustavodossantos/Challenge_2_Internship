@@ -2,7 +2,7 @@ import { useFonts } from 'expo-font';
 import { Text, View, Pressable, StyleSheet, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export default function TabOneScreen() {
+export default function FirstScreen() {
   const navigation = useNavigation();
 
   const [fontsLoaded] = useFonts({

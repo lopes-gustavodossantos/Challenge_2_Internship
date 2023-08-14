@@ -11,7 +11,7 @@ interface Restaurant {
   rating: number;
 }
 
-export default function ThreeScreen() {
+export default function ThirdScreen() {
   const navigation = useNavigation();
 
   const [fontsLoaded] = useFonts({

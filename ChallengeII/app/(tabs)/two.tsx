@@ -10,7 +10,7 @@ interface Restaurant {
   coverImageUrl: string;
 }
 
-export default function TwoScreen() {
+export default function SecondScreen() {
   const navigation = useNavigation();
 
   const [fontsLoaded] = useFonts({
