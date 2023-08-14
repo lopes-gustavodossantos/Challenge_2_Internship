@@ -23,10 +23,10 @@ export default function ThirdScreen() {
   }
 
   return (
-    <View style={styles.container}>
-      <Image source={{ uri: restaurant.coverImageUrl }} style={styles.cardImage} />
-      <Text style={styles.cardTitle}>{restaurant.name}</Text>
-    </View>
+      <View style={styles.container}>
+        <Image source={{ uri: restaurant.coverImageUrl }} style={styles.cardImage} />
+        <Text style={styles.cardTitle}>{restaurant.name}</Text>
+      </View>
   );
 }
 
@@ -34,12 +34,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#2C2C2E',
-  },
-  content: {
-    flexGrow: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingBottom: 80, 
   },
   cardImage: {
     width: '100%',
@@ -49,10 +43,10 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     position: 'absolute',
-    width: 220,
-    height: 'auto',
+    width: 221,
+    height: 64,
+    top: 257,
     left: 19,
-    bottom: 15,
     fontFamily: 'Poppins Regular',
     fontWeight: '700',
     fontSize: 32,

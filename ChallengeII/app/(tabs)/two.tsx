@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingBottom: 80, 
+    paddingBottom: 120, 
   },
   card: {
     width: 370,
