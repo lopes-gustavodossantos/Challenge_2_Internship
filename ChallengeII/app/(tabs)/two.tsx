@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import { useFonts } from "expo-font";
 import React, { useState, useEffect } from "react";
 import {
@@ -16,6 +17,18 @@ type Restaurant = {
   name: string;
   coverImageUrl: string;
 };
+=======
+import React from "react";
+import { useFonts } from "expo-font";
+import {
+  Text,
+  View,
+  Pressable,
+  StyleSheet,
+  ImageBackground,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+>>>>>>> Stashed changes
 
 export default function TabOneScreen() {
   const navigation = useNavigation();
@@ -69,6 +82,7 @@ const RestaurantsListScreen = ({ navigation }: { navigation: any }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
+<<<<<<< Updated upstream
         <Text style={styles.headerTitle}>Restaurantes</Text>
       </View>
       <FlatList
@@ -77,6 +91,11 @@ const RestaurantsListScreen = ({ navigation }: { navigation: any }) => {
         keyExtractor={(item) => item.id.toString()}
         style={styles.flatList}
       />
+=======
+        <Text style={styles.headerText}>Restaurantes</Text>
+      </View>
+      <View style={styles.content}>{}</View>
+>>>>>>> Stashed changes
     </View>
   );
 };
@@ -91,6 +110,7 @@ const styles = StyleSheet.create({
     width: 414,
     height: 100,
     flexShrink: 0,
+<<<<<<< Updated upstream
     right: 8,
     justifyContent: "center",
     alignItems: "center",
@@ -134,5 +154,27 @@ const styles = StyleSheet.create({
   overlay: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: "rgba(0, 0, 0, 0.40)",
+=======
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#1C1C1E",
+  },
+  headerText: {
+    width: 126,
+    height: 32,
+    top: 5,
+    fontFamily: "Poppins Regular",
+    fontSize: 18,
+    fontStyle: "normal",
+    fontWeight: "700",
+    lineHeight: 32,
+    textAlign: "center",
+    color: "#FFFFFF",
+  },
+  content: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+>>>>>>> Stashed changes
   },
 });

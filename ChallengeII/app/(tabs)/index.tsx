@@ -7,6 +7,10 @@ import {
   ImageBackground,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+<<<<<<< Updated upstream
+=======
+import axios from "axios";
+>>>>>>> Stashed changes
 
 export default function TabOneScreen() {
   const navigation = useNavigation();
@@ -33,7 +37,11 @@ export default function TabOneScreen() {
 
         <Pressable
           style={styles.button}
+<<<<<<< Updated upstream
           onPress={() => navigation.navigate("two" as never)}
+=======
+          onPress={() => navigation.navigate("two")}
+>>>>>>> Stashed changes
         >
           <Text style={styles.buttontext}>Acessar</Text>
         </Pressable>
@@ -51,7 +59,11 @@ const styles = StyleSheet.create({
   title: {
     width: 260,
     top: 128,
+<<<<<<< Updated upstream
     left: 75,
+=======
+    left: 77,
+>>>>>>> Stashed changes
     fontFamily: "Bebas Neue",
     fontWeight: "400",
     fontSize: 72,
@@ -63,7 +75,11 @@ const styles = StyleSheet.create({
   byline: {
     width: 132,
     top: 120,
+<<<<<<< Updated upstream
     left: 139,
+=======
+    left: 141,
+>>>>>>> Stashed changes
     fontFamily: "Poppins Regular",
     fontWeight: "400",
     fontSize: 24,
