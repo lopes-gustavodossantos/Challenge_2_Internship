@@ -8,6 +8,7 @@ interface Restaurant {
   name: string;
   coverImageUrl: string;
   rating: number;
+  description: string;
 }
 
 export default function ThirdScreen() {
@@ -24,8 +25,11 @@ export default function ThirdScreen() {
 
   return (
       <View style={styles.container}>
-        <Image source={{ uri: restaurant.coverImageUrl }} style={styles.cardImage} />
-        <Text style={styles.cardTitle}>{restaurant.name}</Text>
+        <Image source={{ uri: restaurant.coverImageUrl }} style={styles.image} />
+        <Text style={styles.title}>{restaurant.name}</Text>
+
+        <Text style={styles.byline}>Sobre o restaurante</Text>
+        <Text style={styles.description}>{restaurant.description}</Text>
       </View>
   );
 }
@@ -35,13 +39,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#2C2C2E',
   },
-  cardImage: {
+  image: {
     width: '100%',
     height: 361,
     flexShrink: 0,
     borderRadius: 20,
   },
-  cardTitle: {
+  title: {
     position: 'absolute',
     width: 221,
     height: 64,
@@ -54,4 +58,30 @@ const styles = StyleSheet.create({
     lineHeight: 32,
     color: '#FFFFFF',
   },
+  byline: {
+    position: 'absolute',
+    width: 204,
+    height: 26,
+    top: 391,
+    left: 16,
+    fontFamily: 'Poppins Regular',
+    fontWeight: '700',
+    fontSize: 20,
+    fontStyle: 'normal',
+    lineHeight: 26,
+    color: '#FFFFFF',
+  },
+  description: {
+    position: 'absolute',
+    width: 358,
+    height: 54,
+    top: 432,
+    left: 16,
+    fontFamily: 'Poppins Regular',
+    fontWeight: '400',
+    fontSize: 14,
+    fontStyle: 'normal',
+    lineHeight: 18,
+    color: '#FFFFFF',
+  }
 });

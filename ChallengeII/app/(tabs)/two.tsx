@@ -6,8 +6,8 @@ import axios from 'axios';
 
 interface Restaurant {
   id: number;
-  name: string;
   coverImageUrl: string;
+  name: string;
 }
 
 export default function SecondScreen() {
