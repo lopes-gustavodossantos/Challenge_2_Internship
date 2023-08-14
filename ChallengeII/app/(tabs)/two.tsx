@@ -1,36 +1,24 @@
-<<<<<<< Updated upstream
 import { useFonts } from "expo-font";
 import React, { useState, useEffect } from "react";
 import {
   Text,
   View,
+  Pressable,
   StyleSheet,
   ActivityIndicator,
   FlatList,
   Image,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
-import { useNavigation } from "@react-navigation/native";
 
-type Restaurant = {
+interface Restaurant {
   id: number;
-  name: string;
   coverImageUrl: string;
-};
-=======
-import React from "react";
-import { useFonts } from "expo-font";
-import {
-  Text,
-  View,
-  Pressable,
-  StyleSheet,
-  ImageBackground,
-} from "react-native";
-import { useNavigation } from "@react-navigation/native";
->>>>>>> Stashed changes
+  name: string;
+}
 
-export default function TabOneScreen() {
+export default function SecondScreen() {
   const navigation = useNavigation();
 
   const [fontsLoaded] = useFonts({
@@ -38,11 +26,15 @@ export default function TabOneScreen() {
   });
 
   if (!fontsLoaded) {
-    return <ActivityIndicator />;
+    return null;
   }
 
   return (
     <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Restaurantes</Text>
+      </View>
+
       <RestaurantsListScreen navigation={navigation} />
     </View>
   );
@@ -53,50 +45,40 @@ const RestaurantsListScreen = ({ navigation }: { navigation: any }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await axios.get(
-          "https://8jcox47hg2.execute-api.us-east-2.amazonaws.com/dev"
-        );
+    axios
+      .get("https://8jcox47hg2.execute-api.us-east-2.amazonaws.com/dev")
+      .then((response) => {
         setRestaurants(response.data.body.restaurants);
         setLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    }
-    fetchData();
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false);
+      });
   }, []);
-
-  const renderRestaurant = ({ item }) => (
-    <View style={styles.card}>
-      <Image source={{ uri: item.coverImageUrl }} style={styles.cardImage} />
-      <View style={styles.overlay}></View>
-      <Text style={styles.cardTitle}>{item.name}</Text>
-    </View>
-  );
 
   if (loading) {
     return <ActivityIndicator />;
   }
 
+  const renderItem = ({ item }: { item: Restaurant }) => (
+    <Pressable
+      onPress={() => navigation.navigate("third", { restaurant: item })}
+    >
+      <View style={styles.card}>
+        <Image source={{ uri: item.coverImageUrl }} style={styles.cardImage} />
+        <Text style={styles.cardTitle}>{item.name}</Text>
+      </View>
+    </Pressable>
+  );
+
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-<<<<<<< Updated upstream
-        <Text style={styles.headerTitle}>Restaurantes</Text>
-      </View>
-      <FlatList
-        data={restaurants}
-        renderItem={renderRestaurant}
-        keyExtractor={(item) => item.id.toString()}
-        style={styles.flatList}
-      />
-=======
-        <Text style={styles.headerText}>Restaurantes</Text>
-      </View>
-      <View style={styles.content}>{}</View>
->>>>>>> Stashed changes
-    </View>
+    <FlatList
+      data={restaurants}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id.toString()}
+      contentContainerStyle={styles.content}
+    />
   );
 };
 
@@ -105,76 +87,49 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#2C2C2E",
   },
-  //Header
   header: {
-    width: 414,
-    height: 100,
-    flexShrink: 0,
-<<<<<<< Updated upstream
-    right: 8,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#1C1C1E",
-  },
-  headerTitle: {
-    marginTop: 35,
-    fontSize: 20,
-    right: 8,
-    fontWeight: "bold",
-    color: "white",
-  },
-  // Flatlist
-  flatList: {
-    paddingHorizontal: 25,
-    paddingTop: 20,
-  },
-  // Cards
-  card: {
-    width: 340,
-    height: 150,
-    borderRadius: 12,
-    overflow: "hidden",
-    marginBottom: 20,
-  },
-  cardImage: {
     width: "100%",
-    height: "100%",
-    position: "absolute",
-  },
-
-  cardTitle: {
-    position: "absolute",
-    bottom: 20,
-    left: 20,
-    color: "white",
-    fontSize: 30,
-    fontWeight: "bold",
-  },
-  //Color Image
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(0, 0, 0, 0.40)",
-=======
+    height: 98,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#1C1C1E",
   },
   headerText: {
-    width: 126,
-    height: 32,
-    top: 5,
     fontFamily: "Poppins Regular",
     fontSize: 18,
-    fontStyle: "normal",
     fontWeight: "700",
-    lineHeight: 32,
-    textAlign: "center",
     color: "#FFFFFF",
   },
   content: {
-    flex: 1,
+    flexGrow: 1,
     alignItems: "center",
     justifyContent: "center",
->>>>>>> Stashed changes
+    paddingBottom: 120,
+  },
+  card: {
+    width: 370,
+    height: 150,
+    top: 30,
+    flexShrink: 0,
+    borderRadius: 12,
+    marginBottom: 20,
+  },
+  cardImage: {
+    width: "100%",
+    height: 150,
+    borderRadius: 12,
+  },
+  cardTitle: {
+    position: "absolute",
+    width: 220,
+    height: "auto",
+    left: 19,
+    bottom: 15,
+    fontFamily: "Poppins Regular",
+    fontWeight: "700",
+    fontSize: 32,
+    fontStyle: "normal",
+    lineHeight: 32,
+    color: "#FFFFFF",
   },
 });
