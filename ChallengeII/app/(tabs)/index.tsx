@@ -17,13 +17,13 @@ export default function FirstScreen() {
   return (
     <View style={styles.container}>
       <ImageBackground source={require('../../assets/images/background_initial_screen.png')} resizeMode="cover" style={styles.imageBackground}>        
-        <View style={styles.overlay}></View> 
+        <View style={styles.overlay}></View>
         <Text style={styles.title}>FIND D BEST</Text>
         <Text style={styles.byline}>Restaurant</Text>
 
         <Pressable style={styles.button} onPress={() => navigation.navigate('two' as never)}>
           <Text style={styles.buttontext}>Acessar</Text>
-        </Pressable>      
+        </Pressable>
       </ImageBackground>
     </View>
   );
