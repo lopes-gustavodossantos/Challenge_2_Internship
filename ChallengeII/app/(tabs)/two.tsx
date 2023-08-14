@@ -1,6 +1,6 @@
 import { useFonts } from 'expo-font';
 import React, { useState, useEffect } from 'react';
-import { Text, View, Pressable, StyleSheet, ImageBackground, ActivityIndicator, FlatList, Image } from 'react-native';
+import { Text, View, Pressable, StyleSheet, ActivityIndicator, FlatList, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 

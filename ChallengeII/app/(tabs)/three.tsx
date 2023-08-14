@@ -1,6 +1,6 @@
 import { useFonts } from 'expo-font';
 import React, { useState, useEffect } from 'react';
-import { Text, View, Pressable, StyleSheet, ImageBackground, ActivityIndicator, FlatList, Image } from 'react-native'; // Added Image
+import { Text, View, Pressable, StyleSheet, FlatList, Image } from 'react-native'; // Added Image
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 
@@ -11,7 +11,7 @@ interface Restaurant {
   rating: number;
 }
 
-export default function TabOneScreen() {
+export default function ThreeScreen() {
   const navigation = useNavigation();
 
   const [fontsLoaded] = useFonts({
@@ -82,7 +82,6 @@ const RestaurantsListScreen = ({ navigation }: { navigation: any }) => {
     />
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {
