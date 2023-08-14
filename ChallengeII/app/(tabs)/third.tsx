@@ -30,6 +30,8 @@ export default function ThirdScreen() {
 
         <Text style={styles.byline}>Sobre o restaurante</Text>
         <Text style={styles.description}>{restaurant.description}</Text>
+
+        <Text style={styles.menuTitle}>Menu</Text>
       </View>
   );
 }
@@ -82,6 +84,19 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontStyle: 'normal',
     lineHeight: 18,
+    color: '#FFFFFF',
+  },
+  menuTitle: {
+    position: 'absolute',
+    width: 58,
+    height: 26,
+    top: 545,
+    left: 16,
+    fontFamily: 'Poppins Regular',
+    fontWeight: '700',
+    fontSize: 20,
+    fontStyle: 'normal',
+    lineHeight: 26,
     color: '#FFFFFF',
   }
 });
