@@ -21,7 +21,7 @@ export default function FirstScreen() {
         <Text style={styles.title}>FIND D BEST</Text>
         <Text style={styles.byline}>Restaurant</Text>
 
-        <Pressable style={styles.button} onPress={() => navigation.navigate('second' as never)}>
+        <Pressable style={styles.button} onPress={() => navigation.navigate('secoundScreen' as never)}>
           <Text style={styles.buttontext}>Acessar</Text>
         </Pressable>
       </ImageBackground>
