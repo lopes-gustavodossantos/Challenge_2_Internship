@@ -1,6 +1,6 @@
 import { useFonts } from 'expo-font';
 import React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image, FlatList } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { FontAwesome } from '@expo/vector-icons';
 
@@ -10,6 +10,12 @@ interface Restaurant {
   coverImageUrl: string;
   rating: number;
   description: string;
+  menu: MenuItem[];
+}
+
+interface MenuItem {
+  title: string;
+  imageUrl: string;
 }
 
 export default function ThirdScreen() {
@@ -44,15 +50,30 @@ export default function ThirdScreen() {
     );
   };
 
+  const menuItems: MenuItem[] = restaurant.menu;
+
   return (
     <View style={styles.container}>
       <Image source={{ uri: restaurant.coverImageUrl }} style={styles.image} />
       <Text style={styles.title}>{restaurant.name}</Text>
       {renderStars(restaurant.rating)}
-      
+
       <Text style={styles.byline}>About the restaurant</Text>
       <Text style={styles.description}>{restaurant.description}</Text>
       <Text style={styles.menuTitle}>Menu</Text>
+
+      <FlatList
+        horizontal
+        data={menuItems}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) => (
+          <View style={styles.menuItemContainer}>
+            <Image source={{ uri: item.imageUrl }} style={styles.menuItemImage} />
+            <Text style={styles.menuItemTitle}>{item.title}</Text>
+          </View>
+        )}
+        contentContainerStyle={styles.menuItemsContainer}
+      />
     </View>
   );
 }
@@ -131,5 +152,26 @@ const styles = StyleSheet.create({
   },
   starContainer: {
     marginRight: 10,
+  },
+  menuItemContainer: {
+    alignItems: 'center',
+    marginRight: 15,
+  },
+  menuItemImage: {
+    width: 170,
+    height: 104,
+    flexShrink: 0,
+    borderRadius: 12,
+  },
+  menuItemTitle: {
+    marginTop: 5,
+    fontFamily: 'Poppins Regular',
+    fontWeight: '700',
+    fontSize: 16,
+    color: '#FFFFFF',
+  },
+  menuItemsContainer: {
+    paddingTop: 10,
+    paddingHorizontal: 16,
   },
 });
