@@ -2,7 +2,10 @@ import { useFonts } from 'expo-font';
 import React from 'react';
 import { Text, View, StyleSheet, Image, FlatList } from 'react-native';
 import { useRoute } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { FontAwesome } from '@expo/vector-icons';
+type FontAwesomeIconName = "key" | "star-o" | "filter";
 
 interface Restaurant {
   id: number;
@@ -19,6 +22,7 @@ interface MenuItem {
 }
 
 export default function ThirdScreen() {
+  const navigation = useNavigation();
   const route = useRoute();
   const { restaurant } = route.params as { restaurant: Restaurant };
 
@@ -29,7 +33,7 @@ export default function ThirdScreen() {
   if (!fontsLoaded) {
     return null;
   }
-
+  
   const renderStars = (rating: number) => {
     const starIcons = [];
     for (let i = 0; i < 5; i++) {
@@ -37,13 +41,13 @@ export default function ThirdScreen() {
       if (i < Math.floor(rating)) {
         iconName = 'star';
       } else if (i === Math.floor(rating) && rating % 1 !== 0) {
-        iconName = 'star-half-o'; // Use o nome correto do ícone de meia estrela, se disponível
+        iconName = 'star-half-o';
       }
-
+      
       starIcons.push(
         <View key={i} style={styles.starContainer}>
           <FontAwesome
-            name={iconName}
+            name={iconName as FontAwesomeIconName}
             size={20}
             color={i + 0.5 <= rating ? '#FFBF00' : '#FFBF00'}
           />
@@ -82,6 +86,9 @@ export default function ThirdScreen() {
         )}
         contentContainerStyle={styles.menuItemsContainer}
       />
+      <TouchableOpacity style={styles.backButton} onPress={() => navigation.navigate('second' as never)}>
+        <Image source={require('../../assets/images/back_arrow.png')}/>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -190,5 +197,15 @@ const styles = StyleSheet.create({
   menuItemsContainer: {
     paddingTop: 10,
     paddingHorizontal: 0,
+    paddingRight: 16,
+  },
+  backButton: {
+    position: 'absolute',
+    width: 20,
+    height: 30,
+    top: 45,
+    left: 19,
+    flexShrink: 0,
+    tintColor: '#FFFFFF',
   },
 });
