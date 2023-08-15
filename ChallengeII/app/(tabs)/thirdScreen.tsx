@@ -1,8 +1,10 @@
 import { useFonts } from "expo-font";
 import React from "react";
 import { Text, View, StyleSheet, Image, FlatList } from "react-native";
-import { useRoute } from "@react-navigation/native";
+import { TouchableOpacity } from "react-native";
+import { useNavigation, useRoute } from "@react-navigation/native"; // Importações corrigidas
 import { FontAwesome } from "@expo/vector-icons";
+type FontAwesomeIconName = "key" | "star-o" | "filter";
 
 interface Restaurant {
   id: number;
@@ -30,6 +32,9 @@ export default function ThirdScreen() {
     return null;
   }
 
+  // Uso do hook useNavigation para obter a referência à navegação
+  const navigation = useNavigation();
+
   const renderStars = (rating: number) => {
     const starIcons = [];
     for (let i = 0; i < 5; i++) {
@@ -37,13 +42,13 @@ export default function ThirdScreen() {
       if (i < Math.floor(rating)) {
         iconName = "star";
       } else if (i === Math.floor(rating) && rating % 1 !== 0) {
-        iconName = "star-half-o"; // Use o nome correto do ícone de meia estrela, se disponível
+        iconName = "star-half-o";
       }
 
       starIcons.push(
         <View key={i} style={styles.starContainer}>
           <FontAwesome
-            name={iconName}
+            name={iconName as FontAwesomeIconName}
             size={20}
             color={i + 0.5 <= rating ? "#FFBF00" : "#FFBF00"}
           />
@@ -61,7 +66,12 @@ export default function ThirdScreen() {
       <Image source={{ uri: restaurant.coverImageUrl }} style={styles.image} />
       <Text style={styles.title}>{restaurant.name}</Text>
       {renderStars(restaurant.rating)}
-
+      <TouchableOpacity
+        style={styles.backButton}
+        onPress={() => navigation.navigate("secoundScreen" as never)}
+      >
+        <Image source={require("../../assets/images/back_arrow.png")} />
+      </TouchableOpacity>
       <Text style={styles.byline}>About the restaurant</Text>
       <Text style={styles.description}>{restaurant.description}</Text>
       <Text style={styles.menuTitle}>Menu</Text>
@@ -102,10 +112,9 @@ const styles = StyleSheet.create({
     height: 64,
     top: 285,
     left: 19,
-    fontFamily: "Poppins Regular",
-    fontWeight: "700",
+
     fontSize: 32,
-    fontStyle: "normal",
+    fontWeight: "700",
     lineHeight: 32,
     color: "#FFFFFF",
   },
@@ -127,11 +136,9 @@ const styles = StyleSheet.create({
     height: 70,
     top: 391,
     left: 16,
-    fontFamily: "Poppins Regular",
-    fontWeight: "700",
     fontSize: 20,
-    fontStyle: "normal",
-    lineHeight: 26,
+    fontWeight: "700",
+    lineHeight: 32,
     color: "#FFFFFF",
   },
   description: {
@@ -140,7 +147,6 @@ const styles = StyleSheet.create({
     height: 54,
     top: 432,
     left: 16,
-    fontFamily: "Poppins Regular",
     fontWeight: "400",
     fontSize: 14,
     fontStyle: "normal",
@@ -153,12 +159,10 @@ const styles = StyleSheet.create({
     height: 26,
     top: 545,
     left: 16,
-    fontFamily: "Poppins Regular",
-    fontWeight: "700",
-    fontSize: 20,
-    fontStyle: "normal",
-    lineHeight: 26,
     color: "#FFFFFF",
+    fontSize: 20,
+    fontWeight: "700",
+    lineHeight: 32,
   },
   menuItemContainer: {
     width: 170,
@@ -189,5 +193,14 @@ const styles = StyleSheet.create({
   menuItemsContainer: {
     paddingTop: 10,
     paddingHorizontal: 0,
+  },
+  backButton: {
+    position: "absolute",
+    width: 20,
+    height: 30,
+    top: 45,
+    left: 19,
+    flexShrink: 0,
+    tintColor: "#FFFFFF",
   },
 });
