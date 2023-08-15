@@ -62,9 +62,7 @@ const RestaurantsListScreen = ({ navigation }: { navigation: any }) => {
   }
 
   const renderItem = ({ item }: { item: Restaurant }) => (
-    <Pressable
-      onPress={() => navigation.navigate("third", { restaurant: item })}
-    >
+    <Pressable onPress={() => navigation.navigate("two", { restaurant: item })}>
       <View style={styles.card}>
         <Image source={{ uri: item.coverImageUrl }} style={styles.cardImage} />
         <Text style={styles.cardTitle}>{item.name}</Text>
