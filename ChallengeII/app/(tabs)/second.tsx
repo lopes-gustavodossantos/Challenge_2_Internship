@@ -24,7 +24,7 @@ export default function SecondScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>Restaurantes</Text>
+        <Text style={styles.headerText}>Restaurants</Text>
       </View>
       
       <RestaurantsListScreen navigation={navigation} />

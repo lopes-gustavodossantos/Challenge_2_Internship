@@ -2,6 +2,7 @@ import { useFonts } from 'expo-font';
 import React from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
 import { useRoute } from '@react-navigation/native';
+import { FontAwesome } from '@expo/vector-icons';
 
 interface Restaurant {
   id: number;
@@ -23,16 +24,36 @@ export default function ThirdScreen() {
     return null;
   }
 
-  return (
-      <View style={styles.container}>
-        <Image source={{ uri: restaurant.coverImageUrl }} style={styles.image} />
-        <Text style={styles.title}>{restaurant.name}</Text>
-
-        <Text style={styles.byline}>Sobre o restaurante</Text>
-        <Text style={styles.description}>{restaurant.description}</Text>
-
-        <Text style={styles.menuTitle}>Menu</Text>
+  const renderStars = (rating: number) => {
+    const starIcons = [];
+    for (let i = 0; i < 5; i++) {
+      starIcons.push(
+        <View key={i} style={styles.starContainer}>
+          <FontAwesome
+            name={i + 0.5 <= rating ? 'star' : 'star-o'}
+            size={20}
+            color={i + 0.5 <= rating ? '#FFBF00' : '#FFF'}
+          />
+        </View>
+      );
+    }
+    return (
+      <View style={styles.starRatingContainer}>
+        {starIcons}
       </View>
+    );
+  };
+
+  return (
+    <View style={styles.container}>
+      <Image source={{ uri: restaurant.coverImageUrl }} style={styles.image} />
+      <Text style={styles.title}>{restaurant.name}</Text>
+      {renderStars(restaurant.rating)}
+      
+      <Text style={styles.byline}>About the restaurant</Text>
+      <Text style={styles.description}>{restaurant.description}</Text>
+      <Text style={styles.menuTitle}>Menu</Text>
+    </View>
   );
 }
 
@@ -63,7 +84,7 @@ const styles = StyleSheet.create({
   byline: {
     position: 'absolute',
     width: 204,
-    height: 26,
+    height: 70,
     top: 391,
     left: 16,
     fontFamily: 'Poppins Regular',
@@ -98,5 +119,17 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
     lineHeight: 26,
     color: '#FFFFFF',
-  }
+  },
+  starRatingContainer: {
+    position: 'absolute',
+    width: 115,
+    height: 25,
+    top: 325,
+    left: 19,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  starContainer: {
+    marginRight: 10,
+  },
 });
