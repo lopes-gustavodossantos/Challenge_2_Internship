@@ -33,16 +33,24 @@ export default function ThirdScreen() {
   const renderStars = (rating: number) => {
     const starIcons = [];
     for (let i = 0; i < 5; i++) {
+      let iconName = 'star-o';
+      if (i < Math.floor(rating)) {
+        iconName = 'star';
+      } else if (i === Math.floor(rating) && rating % 1 !== 0) {
+        iconName = 'star-half-o'; // Use o nome correto do ícone de meia estrela, se disponível
+      }
+
       starIcons.push(
         <View key={i} style={styles.starContainer}>
           <FontAwesome
-            name={i + 0.5 <= rating ? 'star' : 'star-o'}
+            name={iconName}
             size={20}
-            color={i + 0.5 <= rating ? '#FFBF00' : '#FFF'}
+            color={i + 0.5 <= rating ? '#FFBF00' : '#FFBF00'}
           />
         </View>
       );
     }
+
     return (
       <View style={styles.starRatingContainer}>
         {starIcons}
@@ -54,7 +62,7 @@ export default function ThirdScreen() {
 
   return (
     <View style={styles.container}>
-      <Image source={{ uri: restaurant.coverImageUrl }} style={styles.image} />
+      <Image source={{ uri: restaurant.coverImageUrl }} style={styles.image}/>
       <Text style={styles.title}>{restaurant.name}</Text>
       {renderStars(restaurant.rating)}
 
@@ -68,7 +76,7 @@ export default function ThirdScreen() {
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
           <View style={styles.menuItemContainer}>
-            <Image source={{ uri: item.imageUrl }} style={styles.menuItemImage} />
+            <Image source={{ uri: item.imageUrl }} style={styles.menuItemImage}/>
             <Text style={styles.menuItemTitle}>{item.title}</Text>
           </View>
         )}
@@ -101,6 +109,18 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
     lineHeight: 32,
     color: '#FFFFFF',
+  },
+  starRatingContainer: {
+    position: 'absolute',
+    width: 115,
+    height: 25,
+    top: 325,
+    left: 19,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  starContainer: {
+    marginRight: 10,
   },
   byline: {
     position: 'absolute',
@@ -141,21 +161,12 @@ const styles = StyleSheet.create({
     lineHeight: 26,
     color: '#FFFFFF',
   },
-  starRatingContainer: {
-    position: 'absolute',
-    width: 115,
-    height: 25,
-    top: 325,
-    left: 19,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  starContainer: {
-    marginRight: 10,
-  },
   menuItemContainer: {
-    alignItems: 'center',
-    marginRight: 15,
+    width: 170,
+    height: 164,
+    top: 215,
+    marginLeft: 16,
+    borderRadius: 12,
   },
   menuItemImage: {
     width: 170,
@@ -164,14 +175,20 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   menuItemTitle: {
-    marginTop: 5,
+    position: 'absolute',
+    width: 127.5,
+    height: 16,
+    top: 75,
+    left: 24.5,
     fontFamily: 'Poppins Regular',
     fontWeight: '700',
-    fontSize: 16,
+    fontSize: 14,
+    fontStyle: 'normal',
+    lineHeight: 16,
     color: '#FFFFFF',
   },
   menuItemsContainer: {
     paddingTop: 10,
-    paddingHorizontal: 16,
+    paddingHorizontal: 0,
   },
 });
