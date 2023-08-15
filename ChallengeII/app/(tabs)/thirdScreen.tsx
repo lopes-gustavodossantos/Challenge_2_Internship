@@ -2,7 +2,7 @@ import { useFonts } from "expo-font";
 import React from "react";
 import { Text, View, StyleSheet, Image, FlatList } from "react-native";
 import { TouchableOpacity } from "react-native";
-import { useNavigation, useRoute } from "@react-navigation/native"; // Importações corrigidas
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { FontAwesome } from "@expo/vector-icons";
 type FontAwesomeIconName = "key" | "star-o" | "filter";
 

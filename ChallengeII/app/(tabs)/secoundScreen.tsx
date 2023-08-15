@@ -120,7 +120,6 @@ const styles = StyleSheet.create({
     height: "auto",
     left: 19,
     bottom: 15,
-    fontFamily: "Poppins Regular",
     fontWeight: "700",
     fontSize: 32,
     fontStyle: "normal",
