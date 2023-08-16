@@ -35,7 +35,7 @@ export default function FirstScreen() {
           style={styles.button}
           onPress={() => navigation.navigate("second" as never)}
         >
-          <Text style={styles.buttontext}>Acessar</Text>
+          <Text style={styles.buttontext}>Access</Text>
         </Pressable>
       </ImageBackground>
     </View>
