@@ -67,6 +67,10 @@ export default function ThirdScreen() {
   return (
     <View style={styles.container}>
       <Image source={{ uri: restaurant.coverImageUrl }} style={styles.image}/>
+      <TouchableOpacity style={styles.backButton} onPress={() => navigation.navigate('second' as never)}>
+        <Image source={require('../../assets/images/back_arrow.png')}/>
+      </TouchableOpacity>
+      
       <Text style={styles.title}>{restaurant.name}</Text>
       {renderStars(restaurant.rating)}
 
@@ -75,20 +79,22 @@ export default function ThirdScreen() {
       <Text style={styles.menuTitle}>Menu</Text>
 
       <FlatList
-        horizontal
-        data={menuItems}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => (
-          <View style={styles.menuItemContainer}>
-            <Image source={{ uri: item.imageUrl }} style={styles.menuItemImage}/>
-            <Text style={styles.menuItemTitle}>{item.title}</Text>
-          </View>
-        )}
-        contentContainerStyle={styles.menuItemsContainer}
-      />
-      <TouchableOpacity style={styles.backButton} onPress={() => navigation.navigate('second' as never)}>
-        <Image source={require('../../assets/images/back_arrow.png')}/>
-      </TouchableOpacity>
+  horizontal
+  data={menuItems}
+  keyExtractor={(item, index) => index.toString()}
+  renderItem={({ item }) => (
+    
+      <View style={styles.menuCard}>
+        <Image source={{ uri: item.imageUrl }} style={styles.menuItemImage}/>
+        
+          <Text style={styles.menuItemTitle}>{item.title}</Text>
+        
+      </View>
+    
+  )}
+  contentContainerStyle={styles.menuItemsContainer}
+  showsHorizontalScrollIndicator={false}
+/>
     </View>
   );
 }
@@ -103,6 +109,15 @@ const styles = StyleSheet.create({
     height: 361,
     flexShrink: 0,
     borderRadius: 20,
+  },
+  backButton: {
+    position: 'absolute',
+    width: 20,
+    height: 30,
+    top: 45,
+    left: 19,
+    flexShrink: 0,
+    tintColor: '#FFFFFF',
   },
   title: {
     position: 'absolute',
@@ -168,25 +183,24 @@ const styles = StyleSheet.create({
     lineHeight: 26,
     color: '#FFFFFF',
   },
-  menuItemContainer: {
+  menuCard: {
     width: 170,
     height: 164,
-    top: 215,
+    top: 230,
+    flexShrink: 0,
     marginLeft: 16,
     borderRadius: 12,
+    backgroundColor: '#4F4F54',
   },
   menuItemImage: {
-    width: 170,
+    width: '100%',
     height: 104,
     flexShrink: 0,
     borderRadius: 12,
   },
   menuItemTitle: {
-    position: 'absolute',
-    width: 127.5,
-    height: 16,
-    top: 75,
-    left: 24.5,
+    top: 10,
+    left: 10,
     fontFamily: 'Poppins Regular',
     fontWeight: '700',
     fontSize: 14,
@@ -195,17 +209,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
   },
   menuItemsContainer: {
-    paddingTop: 10,
     paddingHorizontal: 0,
     paddingRight: 16,
-  },
-  backButton: {
-    position: 'absolute',
-    width: 20,
-    height: 30,
-    top: 45,
-    left: 19,
-    flexShrink: 0,
-    tintColor: '#FFFFFF',
   },
 });
