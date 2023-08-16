@@ -104,6 +104,7 @@ const styles = StyleSheet.create({
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(0, 0, 0, 0.8)",
+    backgroundColor:
+      "rgba(0, 0, linear-gradient(180deg, #090808 1%, rgba(0, 0, 0, 0.35) 99.44%);",
   },
 });
