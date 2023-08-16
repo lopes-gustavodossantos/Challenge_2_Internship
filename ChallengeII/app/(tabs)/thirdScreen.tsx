@@ -120,7 +120,6 @@ const styles = StyleSheet.create({
     height: 64,
     top: 300,
     left: 19,
-
     fontSize: 32,
     fontWeight: "700",
     lineHeight: 32,
