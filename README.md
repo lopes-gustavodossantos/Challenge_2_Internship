@@ -47,3 +47,7 @@ The fisrt one with a background image, title, and a button that takes you to the
 ><img src="https://github.com/lopes-gustavodossantos/Challenge_2_Internship/assets/94156483/c0580b46-1604-47e7-aa21-7a66d083fcfc" width="220" height="470">
 ><img src="https://github.com/lopes-gustavodossantos/Challenge_2_Internship/assets/94156483/0b0e72f2-fbe8-448d-9cf7-ffbd9df69253" width="220" height="470">
 ><img src="https://github.com/lopes-gustavodossantos/Challenge_2_Internship/assets/94156483/26850dab-69fb-406f-81e4-5c4da3e69f64" width="220" height="470">
+<br> **Images from Iphone** 
+><img src="https://github.com/lopes-gustavodossantos/Challenge_2_Internship/assets/122940694/90c432b1-e15f-4953-9eb6-dd471c5f4a74" width="220" height="470">
+><img src="https://github.com/lopes-gustavodossantos/Challenge_2_Internship/assets/122940694/3e01b3e3-8842-4fdd-b728-5322a7352e91" width="220" height="470">
+><img src="https://github.com/lopes-gustavodossantos/Challenge_2_Internship/assets/122940694/8ded454c-e3c3-402e-821d-6dbc11573def" width="220" height="470">
