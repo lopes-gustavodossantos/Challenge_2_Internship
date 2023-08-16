@@ -64,6 +64,7 @@ export default function ThirdScreen() {
   return (
     <View style={styles.container}>
       <Image source={{ uri: restaurant.coverImageUrl }} style={styles.image} />
+      <View style={styles.imageOverlay}></View>
       <Text style={styles.title}>{restaurant.name}</Text>
       {renderStars(restaurant.rating)}
       <TouchableOpacity
@@ -106,11 +107,18 @@ const styles = StyleSheet.create({
     flexShrink: 0,
     borderRadius: 20,
   },
+  imageOverlay: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(0, 0, 0, 0.25)",
+    borderRadius: 20,
+  },
   title: {
     position: "absolute",
     width: 221,
     height: 64,
-    top: 285,
+    top: 300,
     left: 19,
 
     fontSize: 32,
@@ -157,7 +165,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: 58,
     height: 26,
-    top: 545,
+    top: 500,
     left: 16,
     color: "#FFFFFF",
     fontSize: 20,
@@ -167,7 +175,8 @@ const styles = StyleSheet.create({
   menuItemContainer: {
     width: 170,
     height: 164,
-    top: 215,
+    top: 185,
+    backgroundColor: "#4F4F54",
     marginLeft: 16,
     borderRadius: 12,
   },
@@ -181,9 +190,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: 127.5,
     height: 16,
-    top: 75,
-    left: 24.5,
-    fontFamily: "Poppins Regular",
+    top: 115,
+    left: 10.5,
     fontWeight: "700",
     fontSize: 14,
     fontStyle: "normal",

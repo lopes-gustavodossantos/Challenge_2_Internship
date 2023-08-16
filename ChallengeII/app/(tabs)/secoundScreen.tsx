@@ -59,6 +59,7 @@ const RestaurantsListScreen = ({ navigation }: { navigation: any }) => {
     >
       <View style={styles.card}>
         <Image source={{ uri: item.coverImageUrl }} style={styles.cardImage} />
+        <View style={styles.imageOverlay}></View>
         <Text style={styles.cardTitle}>{item.name}</Text>
       </View>
     </Pressable>
@@ -112,6 +113,13 @@ const styles = StyleSheet.create({
   cardImage: {
     width: "100%",
     height: 150,
+    borderRadius: 12,
+  },
+  imageOverlay: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(0, 0, 0, 0.30)",
     borderRadius: 12,
   },
   cardTitle: {
