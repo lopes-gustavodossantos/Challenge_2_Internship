@@ -1,6 +1,3 @@
-![EditSave_2023_08_16_16_21_40](https://github.com/lopes-gustavodossantos/Challenge_2_Internship/assets/94156483/26850dab-69fb-406f-81e4-5c4da3e69f64)
-![EditSave_2023_08_16_16_19_03](https://github.com/lopes-gustavodossantos/Challenge_2_Internship/assets/94156483/0b0e72f2-fbe8-448d-9cf7-ffbd9df69253)
-![Uploading EditSave_2023_08_16_16_18_25.png…]()
 # Challenge 2 - Week 4 | 08/08/2023 - 16/08/2023
 
 **Description:**
@@ -47,5 +44,6 @@ The fisrt one with a background image, title, and a button that takes you to the
 >lopes.gustavodossantos@gmail.com
 
 <br> **Images:**
-><img src="https://github.com/lopes-gustavodossantos/Challenge_1_Week_4_Compass.UOL/assets/94156483/178d2523-b21e-47d0-bfc0-59dbd0e414db" width="400" height="300">
-><img src="https://github.com/lopes-gustavodossantos/Challenge_1_Week_4_Compass.UOL/assets/94156483/db7343ac-8600-444d-b2e7-cdf6373822cc" width="400" height="300">
+><img src="https://github.com/lopes-gustavodossantos/Challenge_2_Internship/assets/94156483/c0580b46-1604-47e7-aa21-7a66d083fcfc" width="220" height="470">
+><img src="https://github.com/lopes-gustavodossantos/Challenge_2_Internship/assets/94156483/0b0e72f2-fbe8-448d-9cf7-ffbd9df69253" width="220" height="470">
+><img src="https://github.com/lopes-gustavodossantos/Challenge_2_Internship/assets/94156483/26850dab-69fb-406f-81e4-5c4da3e69f64" width="220" height="470">
