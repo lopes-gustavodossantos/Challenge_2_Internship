@@ -23,7 +23,7 @@ The fisrt one with a background image, title, and a button that takes you to the
 >
 >When the project start you will be able to see a QR Code and some keyboard shortcuts. With the QR Code you can visualize the app in your on device. And with the shortcuts you will be able to use an emulator in your computer.
 
->In case of using an emulator for visualization of the app some SDK's can't work.
+>In case of using an emulator for visualization some SDK's can't work.
 
 >For testing in real devices we use: Iphone 11 and Iphone 12.
 >
