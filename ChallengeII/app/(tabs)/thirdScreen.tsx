@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
   menuItemTitle: {
     position: "absolute",
     width: 127.5,
-    height: 16,
+    height: 20,
     top: 115,
     left: 10.5,
     fontWeight: "700",
