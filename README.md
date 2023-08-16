@@ -15,11 +15,19 @@ The fisrt one with a background image, title, and a button that takes you to the
 >Node.js, expo-cli and the downloaded repository.
 
 <br> **How to use:**
->First of all you will need to install Node.js in your machine, after this open your Command Prompt and install the Expo with the follow command: npm install -g expo-cli, with the expo installed open the project folder in the command prompt, after this use the follow command: cd ChallengeII, and in sequence: npm start, to initialize your project. When the project start you will be able to see a QR Code and some keyboard shortcuts. With the QR Code you can visualize the app in your on device. And with the shortcuts u will be able to use an emulator in your computer.
+>First of all you will need to install Node.js in your machine.
+>
+>After this, open your Command Prompt and install the Expo with the follow command: npm install -g expo-cli.
+>
+>With the expo installed open the project folder in the command prompt, after this use the follow command: cd ChallengeII (ls ChallengeII on Mac), and in sequence: npm start, to initialize your project.
+>
+>When the project start you will be able to see a QR Code and some keyboard shortcuts. With the QR Code you can visualize the app in your on device. And with the shortcuts you will be able to use an emulator in your computer.
 
->In case of using an emulator for visualization of the app some SDK's can't work. 
+>In case of using an emulator for visualization of the app some SDK's can't work.
 
->For test in emulator we use: Android 13 (Tiramisu) and Pixel 7 Pro as virtual device.
+>For testing in real devices we use: Iphone 11 and Iphone 12.
+>
+>For testing in emulator we use: Android 13 (Tiramisu) and Pixel 7 Pro as virtual device.
 
 >At the end of this file you will be able to see some images of the Project.
 
