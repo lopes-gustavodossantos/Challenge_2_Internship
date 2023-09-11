@@ -1,4 +1,4 @@
-# Challenge 2 - Week 4 | 08/08/2023 - 16/08/2023
+# Challenge 2 - Week 8 | 08/08/2023 - 16/08/2023
 
 **Description:**
 
