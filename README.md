@@ -29,8 +29,6 @@ The fisrt one with a background image, title, and a button that takes you to the
 >
 >For testing in emulator we use: Android 13 (Tiramisu) and Pixel 7 Pro as virtual device.
 
->At the end of this file you will be able to see some images of the Project.
-
 <br> **Authors:**
 >Gustavo dos Santos Lopes
 
@@ -42,3 +40,5 @@ The fisrt one with a background image, title, and a button that takes you to the
 
 <br> **For support:**
 >lopes.gustavodossantos@gmail.com
+
+<br> **Unfortunately, the API I was using is no longer available, so I can’t put any images here!**
